@@ -21,6 +21,7 @@ const WelcomeScreen = props => {
           <SubmitButton
             style={styles.submitButtonStyle}
             title="Get Started"
+            onPress={()=>props.navigation.navigate('LoginScreen')}
           />
           </View>
       </View>

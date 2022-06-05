@@ -3,7 +3,7 @@ const theme = {
   black:"#000000",
   defaultAuthDescriptionColor: '#707070',
   defaultActiveBorderColor: '#95DCD6',
-  defaultInactiveBorderColor: '#707070',
+  defaultInactiveBorderColor: '#b4b4b4',
   defaultTextColor: '#0C0D34',
   defaultForgotPasswordColor: '#000',
   borderBottomDefaultColor: '#BDC4CC',
