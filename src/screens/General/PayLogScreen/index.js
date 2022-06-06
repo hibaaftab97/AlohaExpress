@@ -1,19 +1,70 @@
 import React, { useState } from 'react';
-import { View, Dimensions, LayoutAnimation, ImageBackground, Text } from 'react-native';
+import { View, FlatList, LayoutAnimation, ImageBackground, Image ,TouchableOpacity} from 'react-native';
 import styles from './styles';
 import { vh, vw } from '../../../units';
+import CommonHeader from '../../../components/Headers/CommonHeader';
+import theme from '../../../utils/theme';
+import ScrollWrapper from '../../../components/ScrollWrapper';
+import TextWrapper from '../../../components/TextWrapper';
+import { Icons } from '../../../assets/images';
 
-const PaylogScreen = props => {
-  
+
+const HomeScreen = props => {
+
+  const list = [{
+    date: "01 April, 2022",
+    amount: '$238.92'
+  },
+  {
+    date: "01 April, 2022",
+    amount: '$238.92'
+  },
+  {
+    date: "01 April, 2022",
+    amount: '$238.92'
+  },
+  {
+    date: "01 April, 2022",
+    amount: '$238.92'
+  },
+  ]
+
+  const [activeIndex,setActive]=useState(-1)
+  const renderItem = ({ item, index }) => {
+    return (
+      <TouchableOpacity style={[styles.box,{backgroundColor:index==activeIndex?theme.primary:theme.whiteBackground}]}
+      onPress={()=>setActive(index)}>
+         <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+           <TextWrapper style={[styles.title,{color:index==activeIndex? theme.whiteBackground:'#aeaeae'}]}>Date</TextWrapper>
+           <TextWrapper style={[styles.title,{color:index==activeIndex? theme.whiteBackground:'#aeaeae'}]}>Amount</TextWrapper>
+          
+        </View>
+        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+           <TextWrapper style={[styles.subtitle,{color:index==activeIndex? theme.whiteBackground:'#1d1f1f'}]}>{item.date}</TextWrapper>
+           <TextWrapper style={[styles.subtitle,{color:index==activeIndex? theme.whiteBackground:theme.primary}]}>{item.amount}</TextWrapper>
+          
+        </View>
+      </TouchableOpacity>
+    )
+  }
   return (
-      <ImageBackground  
-      style={{height:100*vh,width:100*vw,  alignItems: 'flex-end',
-      justifyContent:'flex-end'}}
-      resizeMode='cover'
-      imageStyle={styles.scroll}
-      source={require('../../../assets/images/aboutus.png')}>
+    <View style={styles.scroll}>
+      <CommonHeader type='drawer'
+        title="Payment Logs"
+        profile />
+      <FlatList
+        data={list}
+        renderItem={renderItem}
+        contentContainerStyle={{ alignItems: 'center',paddingBottom: 10 * vh, }}
 
-      </ImageBackground>
+        keyExtractor={item => item.id}
+        style={{ paddingBottom: 10 * vh, width: 100 * vw }}
+        showsVerticalScrollIndicator={false}
+      />
+
+
+
+    </View >
   );
 };
-export default PaylogScreen;
+export default HomeScreen;

@@ -32,7 +32,7 @@ const drawerRoutes = {
   },
 
   PayLogScreen: {
-    label: 'Wishlist',
+    label: 'Pay Logs',
     icon: Icons.drawer3,
   },
   ProfileScreen: {
