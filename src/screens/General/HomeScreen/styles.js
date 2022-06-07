@@ -40,6 +40,12 @@ const styles = StyleSheet.create({
     fontFamily:Fonts.AR_medium,
     fontSize:2*vh
   },
+  bannertitle:{
+    color:theme.black,
+    fontFamily:Fonts.AR_extrabold,
+    width:50*vw,
+    fontSize:2*vh
+  },
   img:{
     width:6*vw,
     height:6*vw,

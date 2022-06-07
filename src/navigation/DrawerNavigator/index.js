@@ -5,6 +5,7 @@ import ProfileScreen from '../../screens/General/ProfileScreen';
 import PayLogScreen from '../../screens/General/PayLogScreen';
 import AppointmentScreen from '../../screens/General/AppointmentScreen';
 import HomeScreen from '../../screens/General/HomeScreen';
+import PaymentStack from '../PaymentStack';
 
 import { vh, vw } from '../../units';
 
@@ -21,13 +22,21 @@ const DrawerNavigator = props => {
         headerShown: false,
         overlayColor: 'transparent',
         drawerStyle: {
-          width: 70 * vw,
+          width: 80 * vw,
+          shadowOffset: {
+            width: 5,
+            height: 5,
+          },
+          shadowOpacity: 0.5,
+          borderRadius:1.5*vh,
+          shadowRadius: 4 * vw,
+          elevation: 10,
         },
         sceneContainerStyle: { backgroundColor: 'black' },
       }}>
       <Drawer.Screen name="HomeScreen" component={HomeScreen} />
       <Drawer.Screen name="AppointmentScreen" component={AppointmentScreen} />
-      <Drawer.Screen name="PayLogScreen" component={PayLogScreen} />
+      <Drawer.Screen name="PaymentStack" component={PaymentStack} />
       <Drawer.Screen name="ProfileScreen" component={ProfileScreen} />
       
     </Drawer.Navigator>

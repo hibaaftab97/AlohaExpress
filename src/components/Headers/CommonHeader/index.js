@@ -29,7 +29,7 @@ const CommonHeader = props => {
               {
                 tintColor: props?.tintColor
                   ? props?.tintColor
-                  : theme.whiteBackground,
+                  : theme.black,
               },
             ]}
           />
@@ -38,7 +38,7 @@ const CommonHeader = props => {
     }
   };
   return (
-    <View style={{alignItems:'center'}}>
+    <View style={{alignItems:'center',}}>
     <View style={styles.searchView}>
       {renderHeaderButton()}
       <TextWrapper
@@ -52,8 +52,10 @@ const CommonHeader = props => {
           onPress={props.onPress}
           style={styles.searchIconButtonView}>
           {props.profile ? (
-            <Image style={styles.searchIconStyle} source={Icons.drawer1} />
-          ) : null}
+            <Image style={styles.searchIconStyle} source={Icons.profile} />
+          ) : props.edit ? (
+            <Image style={styles.searchIconStyle} source={Icons.edit} />
+          ):null}
           {/* <Image style={styles.searchIconStyle} source={icons.search} /> */}
         </TouchableOpacity>
       </View>

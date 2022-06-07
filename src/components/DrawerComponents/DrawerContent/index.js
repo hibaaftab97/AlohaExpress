@@ -1,20 +1,22 @@
 import React, { useState } from 'react';
 import styles from './styles';
-import { Image, View } from 'react-native';
+import { Image, ImageBackground, View } from 'react-native';
 import Animated from 'react-native-reanimated';
-import { useDrawerProgress ,DrawerContentScrollView,} from '@react-navigation/drawer';
+import { useDrawerProgress, DrawerContentScrollView, } from '@react-navigation/drawer';
 import TextWrapper from '../../TextWrapper';
 import { Icons } from '../../../assets/images';
 import theme from '../../../utils/theme';
-import { vh } from '../../../units';
+import { vh, vw } from '../../../units';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import DrawerButton from '../DrawerButton';
+import SubmitButton from '../../../components/Buttons/SubmitButton';
+
 
 
 const routeOrders = [
   'HomeScreen',
   'AppointmentScreen',
-  'PayLogScreen',
+  'PaymentStack',
   'ProfileScreen',
 
 
@@ -31,17 +33,20 @@ const drawerRoutes = {
     icon: Icons.drawer2,
   },
 
-  PayLogScreen: {
+  PaymentStack: {
     label: 'Pay Logs',
     icon: Icons.drawer3,
   },
   ProfileScreen: {
-    label: 'Orders',
+    label: 'My Profile',
     icon: Icons.drawer4,
   },
 };
 
+
 const DrawerContent = props => {
+const [timeIn,setTimein]=useState(false)
+
   const handleOnDrawerItemPress = routeName => {
     if (drawerRoutes[routeName]) {
       if (drawerRoutes[routeName].notRoute != true) {
@@ -59,34 +64,14 @@ const DrawerContent = props => {
     <DrawerContentScrollView
       {...props}
       contentContainerStyle={styles.drawerScrollView}>
-      <TouchableOpacity
-        // onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}
-        style={styles.crossButtonView}>
-      </TouchableOpacity>
-      <View style={styles.header}>
+      <ImageBackground source={Icons.drawerbg}
+        imageStyle={{ width: 80 * vw, height: 50 * vh }}
+        resizeMode='cover'
+        style={{ width: 80 * vw, height: 20 * vh, alignItems: 'center', justifyContent: 'center' }}>
+        <Image source={Icons.logo}
+          style={styles.logo} />
+      </ImageBackground>
 
-        <TextWrapper
-          numberOfLines={3}
-          style={{
-            color: theme.whiteBackground,
-            marginTop: 2 * vh,
-          }}
-        >
-          {/* {user} */}
-          Sarah Parker
-        </TextWrapper>
-        <TextWrapper
-          numberOfLines={3}
-          style={{
-            color: theme.whiteBackground,
-            fontSize: 1.7 * vh,
-            // marginTop: 2 * vh,
-          }}
-        >
-          {/* {user} */}
-          @sarah.parker
-        </TextWrapper>
-      </View>
       <View style={styles.routeContainer}>
         {routeOrders.map((item, index) => {
           return (
@@ -98,7 +83,19 @@ const DrawerContent = props => {
           );
         })}
       </View>
+      <View style={{alignItems:'center',marginTop:10*vh}}>
+      <SubmitButton
+      onPress={()=>setTimein(!timeIn)}
+          style={styles.submitButtonStyle}
+          title={timeIn?"Time Out":"Time In"}
+        />
+        <SubmitButton
+          style={styles.submitButtonStyle}
+          title="Log Out"
+        />
+      <TextWrapper style={styles.label}>© 2022 Aloha Express Medical. All Rights Reserved</TextWrapper>
 
+      </View>
 
     </DrawerContentScrollView>
   );

@@ -33,7 +33,12 @@ const HomeScreen = props => {
   const renderItem = ({ item, index }) => {
     return (
       <TouchableOpacity style={[styles.box,{backgroundColor:index==activeIndex?theme.primary:theme.whiteBackground}]}
-      onPress={()=>setActive(index)}>
+      onPress={()=>
+      {
+        setActive(index)
+        props.navigation.navigate('PaymentDetailScreen')
+      }
+      }>
          <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
            <TextWrapper style={[styles.title,{color:index==activeIndex? theme.whiteBackground:'#aeaeae'}]}>Date</TextWrapper>
            <TextWrapper style={[styles.title,{color:index==activeIndex? theme.whiteBackground:'#aeaeae'}]}>Amount</TextWrapper>

@@ -44,6 +44,7 @@ const LoginScreen = props => {
           </TouchableOpacity>
 
           <SubmitButton
+          onPress={()=>props.navigation.navigate('DrawerNavigator')}
             style={styles.submitButtonStyle}
             title="LogIn"
           />
@@ -57,7 +58,8 @@ const LoginScreen = props => {
       contentContainerStyle={styles.content}>
       <ImageBackground
         style={{
-          height: 100 * vh, width: 100 * vw, alignItems: 'flex-end',
+          height: 100 * vh, width: 100 * vw,
+          
           justifyContent: 'flex-end'
         }}
         resizeMode='cover'

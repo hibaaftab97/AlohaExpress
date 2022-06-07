@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+import { Fonts } from '../../../assets/fonts';
 import {vh, vw} from '../../../units';
 import theme from '../../../utils/theme';
 
@@ -11,6 +12,25 @@ const styles = StyleSheet.create({
   },
   routeContainer: {
     marginTop: 3 * vh,
+    borderTopColor:theme.primary,
+    borderLeftColor:'transparent',
+    borderRightColor:'transparent',
+    paddingTop:4*vh,
+    alignItems:'flex-end',
+    borderBottomColor:'transparent',
+    borderWidth:0.2*vh
+  
+  },
+  submitButtonStyle: {
+    width: 60 * vw,
+    marginTop: 2 * vh,
+    
+  },
+  logo:{
+    resizeMode: 'contain',
+    height: 30 * vh,
+    width: 30 * vw,
+    marginTop:2*vh
   },
   name: {
     fontSize: 2.4 * vh,
@@ -49,8 +69,10 @@ const styles = StyleSheet.create({
   },
 
   label: {
-    fontSize: 2 * vh,
-    color: theme.whiteBackground,
+    fontSize: 1.5 * vh,
+    fontFamily:Fonts.AR_medium,
+    color: theme.black,
+    marginTop:2*vh
   },
 
   logoutButtonStyle: {

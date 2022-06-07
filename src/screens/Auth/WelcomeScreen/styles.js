@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
   },
   scroll: {
     flex: 1,
-    
+   
   },
   content: {
     // alignItems: 'flex-end',

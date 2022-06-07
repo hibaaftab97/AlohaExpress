@@ -30,7 +30,7 @@ const WelcomeScreen = props => {
   return (
     // <MainContainer source={'none'}>
       <ImageBackground  
-      style={{height:100*vh,width:100*vw,  alignItems: 'flex-end',
+      style={{height:100*vh,width:100*vw, 
       justifyContent:'flex-end'}}
       resizeMode='cover'
       imageStyle={styles.scroll}

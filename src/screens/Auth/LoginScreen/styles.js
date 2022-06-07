@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
   },
   scroll: {
     flex: 1,
-
+    opacity:0.5,
   },
   content: {
     // alignItems: 'flex-end',

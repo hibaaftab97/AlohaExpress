@@ -1,5 +1,6 @@
-import {StyleSheet} from 'react-native';
-import {vh, vw} from '../../../units';
+import { StyleSheet } from 'react-native';
+import { Fonts } from '../../../assets/fonts';
+import { vh, vw } from '../../../units';
 import theme from '../../../utils/theme';
 
 const styles = StyleSheet.create({
@@ -7,6 +8,13 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     marginBottom: 3 * vh,
+    borderBottomColor: '#e6e6e6',
+    borderWidth: 0.2 * vh,
+    borderTopColor: 'transparent',
+    borderRightColor: 'transparent',
+    borderLeftColor: 'transparent',
+    paddingVertical: 1 * vh,
+    width: 70 * vw
   },
   icon: {
     // tintColor: theme.whiteBackground,
@@ -18,6 +26,7 @@ const styles = StyleSheet.create({
   label: {
     fontSize: 2 * vh,
     color: theme.black,
+    fontFamily:Fonts.AR_extrabold
   },
 });
 

@@ -19,12 +19,12 @@ const drawerRoutes = {
     icon: Icons.drawer2,
   },
 
-  PayLogScreen: {
+  PaymentStack: {
     label: 'Pay Logs',
     icon: Icons.drawer3,
   },
   ProfileScreen: {
-    label: 'My Orders',
+    label: 'My Profile',
     icon: Icons.drawer4,
   },
 

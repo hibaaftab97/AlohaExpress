@@ -13,8 +13,15 @@ export const Icons = {
   drawer3: require('./icons/drawer3.png'),
   drawer4: require('./icons/drawer4.png'),
   leftArrow: require('./icons/leftArrow.png'),
+  profile: require('./icons/profile.png'),
+  edit: require('./icons/edit.png'),
+  logo: require('./icons/logo.png'),
+  drawerbg: require('./icons/drawerbg.png'),
+  appoint: require('./icons/appoint.png'),
+  banner: require('./icons/banner.png'),
+  menu: require('./icons/menu.png'),
 
-  menu: require('./icons/drawer.png'),
+
 
 };
 

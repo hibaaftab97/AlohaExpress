@@ -33,8 +33,8 @@ export default style = StyleSheet.create({
 
   searchIconStyle: {
     resizeMode: 'contain',
-    height: 4 * vh,
-    width: 4 * vw,
+    height: 7 * vh,
+    width: 7 * vw,
   },
 
   drawerIconStyle: {

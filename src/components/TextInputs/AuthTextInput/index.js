@@ -14,7 +14,7 @@ const AuthTextInput = props => {
   return (
     <View
       style={[focus ? styles.customStyle : styles.textInputView, props.style]}>
-      <View style={styles.emailIconView}>
+      {!props.icon&&<View style={styles.emailIconView}>
         <Image
           source={
             props.type === 'password' ? authIcons.password : authIcons.email
@@ -28,7 +28,7 @@ const AuthTextInput = props => {
             },
           ]}
         />
-      </View>
+      </View>}
       <TextInput
         value={props.value}
         maxLength={props?.maxLength}

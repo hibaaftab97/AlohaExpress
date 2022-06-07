@@ -13,19 +13,19 @@ const HomeScreen = props => {
 
   const list = [{
     title: "All Appointments",
-    image: Icons.drawer1
+    image: Icons.appoint
   },
   {
     title: "Latest Appointments",
-    image: Icons.drawer1
+    image: Icons.appoint
   },
   {
     title: "Completed Appointments",
-    image: Icons.drawer1
+    image: Icons.appoint
   },
   {
     title: "Incomplete Appointments",
-    image: Icons.drawer1
+    image: Icons.appoint
   },
   ]
 
@@ -33,11 +33,16 @@ const HomeScreen = props => {
   const renderItem = ({ item, index }) => {
     return (
       <TouchableOpacity style={[styles.box,{backgroundColor:index==activeIndex?theme.primary:theme.whiteBackground}]}
-      onPress={()=>setActive(index)}>
+      onPress={()=>
+      {
+        setActive(index)
+        props.navigation.navigate('AppointmentScreen')
+      }
+     }>
         <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
           <TextWrapper style={[styles.title,{color:index==activeIndex? theme.whiteBackground:'#aeaeae'}]}>{item.title}</TextWrapper>
-          <Image source={item.image}
-            style={[styles.img,{tintColor:index==activeIndex&&theme.whiteBackground}]} />
+          {index==activeIndex&&<Image source={Icons.appoint}
+            style={styles.img} />}
         </View>
       </TouchableOpacity>
     )
@@ -47,6 +52,14 @@ const HomeScreen = props => {
       <CommonHeader type='drawer'
         title="Home"
         profile />
+        <ImageBackground  source={Icons.banner} 
+        resizeMode='cover'
+        imageStyle={{width:80*vw,height:35*vw,borderRadius:2*vh}}
+        style={{width:80*vw,height:35*vw,justifyContent:'center'}}>
+          <TextWrapper style={styles.bannertitle}>We Provide Fast &  Reliable Medical Testing  Services</TextWrapper>
+
+
+        </ImageBackground>
       <FlatList
         data={list}
         renderItem={renderItem}
