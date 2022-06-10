@@ -2,7 +2,8 @@ import React from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import DrawerContent from '../../components/DrawerComponents/DrawerContent';
 import ProfileScreen from '../../screens/General/ProfileScreen';
-import PayLogScreen from '../../screens/General/PayLogScreen';
+import AppointmentStack from '../AppointmentStack';
+
 import AppointmentScreen from '../../screens/General/AppointmentScreen';
 import HomeScreen from '../../screens/General/HomeScreen';
 import PaymentStack from '../PaymentStack';
@@ -35,7 +36,7 @@ const DrawerNavigator = props => {
         sceneContainerStyle: { backgroundColor: 'black' },
       }}>
       <Drawer.Screen name="HomeScreen" component={HomeScreen} />
-      <Drawer.Screen name="AppointmentScreen" component={AppointmentScreen} />
+      <Drawer.Screen name="AppointmentStack" component={AppointmentStack} />
       <Drawer.Screen name="PaymentStack" component={PaymentStack} />
       <Drawer.Screen name="ProfileScreen" component={ProfileScreen} />
       

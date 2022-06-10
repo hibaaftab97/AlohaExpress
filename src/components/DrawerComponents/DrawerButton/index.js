@@ -14,7 +14,7 @@ const drawerRoutes = {
     icon: Icons.drawer1,
   },
 
-  AppointmentScreen: {
+  AppointmentStack: {
     label: 'Appointment',
     icon: Icons.drawer2,
   },

@@ -20,6 +20,8 @@ export const Icons = {
   appoint: require('./icons/appoint.png'),
   banner: require('./icons/banner.png'),
   menu: require('./icons/menu.png'),
+  upload: require('./icons/upload.png'),
+  attach: require('./icons/attach.png'),
 
 
 

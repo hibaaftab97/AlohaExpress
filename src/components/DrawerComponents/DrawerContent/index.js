@@ -15,7 +15,7 @@ import SubmitButton from '../../../components/Buttons/SubmitButton';
 
 const routeOrders = [
   'HomeScreen',
-  'AppointmentScreen',
+  'AppointmentStack',
   'PaymentStack',
   'ProfileScreen',
 
@@ -28,7 +28,7 @@ const drawerRoutes = {
     icon: Icons.drawer1,
   },
 
-  AppointmentScreen: {
+  AppointmentStack: {
     label: 'About',
     icon: Icons.drawer2,
   },

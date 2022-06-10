@@ -49,7 +49,10 @@ const AppointmentScreen = props => {
 
   const renderItem = ({ item, index }) => {
     return (
-      <View style={styles.box}
+      <TouchableOpacity style={styles.box}
+      onPress={()=> props.navigation.navigate('AppointmentDetailScreen',{
+        service:item?.service
+      })}
       >
         <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
 
@@ -84,7 +87,7 @@ const AppointmentScreen = props => {
 
         </View>
 
-      </View>
+      </TouchableOpacity>
     )
   }
   return (
