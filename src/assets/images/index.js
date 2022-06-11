@@ -22,7 +22,9 @@ export const Icons = {
   menu: require('./icons/menu.png'),
   upload: require('./icons/upload.png'),
   attach: require('./icons/attach.png'),
+  download: require('./icons/download.png'),
 
+  camera: require('./icons/camera.png'),
 
 
 };

@@ -39,7 +39,7 @@ const LoginScreen = props => {
 
           </View>
           <TouchableOpacity onPress={() => props.navigation.navigate('ForgotPasswordScreen')}>
-            <TextWrapper style={styles.fpw}>Fotgot Password</TextWrapper>
+            <TextWrapper style={styles.fpw}>Forgot Password</TextWrapper>
 
           </TouchableOpacity>
 

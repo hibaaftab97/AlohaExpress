@@ -12,21 +12,20 @@ import IconButton from '../../../components/Buttons/IconButton'
 const PaymentDetailScreen = props => {
 
   const list = [{
-    date: "01 April, 2022",
-    amount: '$238.92'
+    date: "Blood Report 02/05/22",
+    upload: 'Uploaded by Smith Jhonson at 4:02 PM'
   },
   {
-    date: "01 April, 2022",
-    amount: '$238.92'
+    date: "CPR Report 02/05/22",
+
+    upload: 'Uploaded by Smith Jhonson at 4:02 PM'
   },
   {
-    date: "01 April, 2022",
-    amount: '$238.92'
+    date: "CPR Report 02/05/22",
+
+    upload: 'Uploaded by Smith Jhonson at 4:02 PM'
   },
-  {
-    date: "01 April, 2022",
-    amount: '$238.92'
-  },
+ 
   ]
 
 
@@ -91,6 +90,43 @@ const PaymentDetailScreen = props => {
       </View>
     )
   }
+  const renderItem = ({ item, index }) => {
+    return (
+     
+      <View style={{marginTop:2*vh}}>
+      <TextWrapper style={styles.title}>PDF</TextWrapper>
+      <View style={{flexDirection:'row',justifyContent:'space-between',alignItems:'center'}}>
+          <View>
+          <TextWrapper style={styles.subtitle}>{item.date}</TextWrapper>
+          <TextWrapper style={styles.uploadtext}>{item.upload}</TextWrapper>
+
+          </View>
+          <TouchableOpacity>
+          <Image  source={Icons.download}
+          style={styles.img}/>
+          </TouchableOpacity>
+        
+      </View>
+    </View>
+    )
+  }
+  const AttachDetails = () => {
+    return (
+      <View style={styles.box}>
+        <TextWrapper style={[styles.headertitle,{marginBottom:0}]}>Attachments</TextWrapper>
+
+       
+        <FlatList
+        data={list}
+        renderItem={renderItem}
+
+        showsVerticalScrollIndicator={false}
+      />
+
+
+      </View>
+    )
+  }
 
   return (
     <View style={styles.scroll}>
@@ -103,19 +139,16 @@ const PaymentDetailScreen = props => {
       contentContainerStyle={{alignItems:'center'}}>
         {patientDetails()}
         {AppoinDetails()}
+        {AttachDetails()}
+
         <View style={{ flexDirection: 'row',
-        width:40*vw,
         paddingBottom:5*vh,alignItems:'center',justifyContent:'space-between' }}>
           <View>
          <IconButton  title="Upload"
          icon={Icons.upload}/>
 
           </View>
-          <View>
-         <IconButton  title="Attachment"
-         icon={Icons.attach}/>
-
-          </View>
+        
         </View>
       </ScrollView>
 

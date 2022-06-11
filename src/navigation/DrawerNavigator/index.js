@@ -4,9 +4,9 @@ import DrawerContent from '../../components/DrawerComponents/DrawerContent';
 import ProfileScreen from '../../screens/General/ProfileScreen';
 import AppointmentStack from '../AppointmentStack';
 
-import AppointmentScreen from '../../screens/General/AppointmentScreen';
 import HomeScreen from '../../screens/General/HomeScreen';
 import PaymentStack from '../PaymentStack';
+import ProfileStack from '../ProfileStack';
 
 import { vh, vw } from '../../units';
 
@@ -38,7 +38,7 @@ const DrawerNavigator = props => {
       <Drawer.Screen name="HomeScreen" component={HomeScreen} />
       <Drawer.Screen name="AppointmentStack" component={AppointmentStack} />
       <Drawer.Screen name="PaymentStack" component={PaymentStack} />
-      <Drawer.Screen name="ProfileScreen" component={ProfileScreen} />
+      <Drawer.Screen name="ProfileStack" component={ProfileStack} />
       
     </Drawer.Navigator>
   );

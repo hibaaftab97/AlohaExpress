@@ -23,7 +23,7 @@ const drawerRoutes = {
     label: 'Pay Logs',
     icon: Icons.drawer3,
   },
-  ProfileScreen: {
+  ProfileStack: {
     label: 'My Profile',
     icon: Icons.drawer4,
   },

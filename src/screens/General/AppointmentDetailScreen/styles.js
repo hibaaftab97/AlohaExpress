@@ -76,6 +76,11 @@ justifyContent:'center',
     fontFamily:Fonts.AR_medium,
     fontSize:2*vh
   },
+  uploadtext:{
+    color:'#4879ca',
+    fontFamily:Fonts.AR_regular,
+    fontSize:1.3*vh
+  },
   img:{
     width:6*vw,
     height:6*vw,

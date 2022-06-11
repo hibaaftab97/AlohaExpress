@@ -131,7 +131,7 @@ const ForgotPasswordScreen = props => {
         <View style={styles.fieldsView}>
           <TextWrapper style={styles.shortdes}>Enter OTP</TextWrapper>
 
-          <TextWrapper style={styles.des}>An 8 digit number has been sent to your email</TextWrapper>
+          <TextWrapper style={styles.des}>A 4 digit number has been sent to your email</TextWrapper>
           <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
             <CodeInput
               value={code1}

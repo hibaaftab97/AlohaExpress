@@ -36,7 +36,7 @@ const HomeScreen = props => {
       onPress={()=>
       {
         setActive(index)
-        props.navigation.navigate('AppointmentScreen')
+        props.navigation.navigate('AppointmentStack')
       }
      }>
         <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>

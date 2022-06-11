@@ -9,7 +9,17 @@ const styles = StyleSheet.create({
     width: 80 * vw,
     marginTop: 3 * vh,
   },
-
+  circle:{
+      height:7*vw,
+      width:7*vw,
+      borderRadius:3.5*vw,
+      position:'absolute',
+      alignItems:'center',
+      justifyContent:'center',
+      right:2*vw,
+      bottom:0,
+      backgroundColor:theme.primary
+  },
   fieldContainer: {
     // backgroundColor: theme.whiteBackground,
     paddingVertical: 6 * vh,
@@ -20,16 +30,6 @@ const styles = StyleSheet.create({
     flex: 1,
 
   },
-  subtitle:{
-    color:theme.black,
-    fontFamily:Fonts.AR_medium,
-    fontSize:2*vh
-  },
-  title:{
-    color:'#aeaeae',
-    fontFamily:Fonts.AR_medium,
-    fontSize:1.5*vh
-  },
   content: {
     // alignItems: 'flex-end',
     // justifyContent:'flex-end'
@@ -38,7 +38,8 @@ const styles = StyleSheet.create({
     color: theme.black,
     fontSize: 2.5 * vh,
     textAlign: 'center',
-    marginTop:vh,
+
+    marginTop:1.5*vh,
     fontFamily: Fonts.AR_regular
 
   },
@@ -55,9 +56,15 @@ const styles = StyleSheet.create({
       height:30*vw,
       resizeMode:'contain'
   },
+  imgIcon: {
+    width:4*vw,
+    height:4*vw,
+    resizeMode:'contain',
+    tintColor:'white'
+},
   miniContainer: {
-    // justifyContent: 'center',
-    // alignItems: 'center',
+    justifyContent: 'center',
+    alignItems: 'center',
     width: 80 * vw,
     alignSelf: 'center',
   },

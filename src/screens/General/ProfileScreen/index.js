@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Dimensions, Image, ImageBackground, Text } from 'react-native';
+import { View, Dimensions, Image, ImageBackground, Text,TouchableOpacity } from 'react-native';
 import styles from './styles';
 import { vh, vw } from '../../../units';
 import AuthTextInput from '../../../components/TextInputs/AuthTextInput';
@@ -26,53 +26,35 @@ const ProfileScreen = props => {
       <View style={styles.fieldContainer}>
 
         <View style={styles.miniContainer}>
+          <View style={{alignItems:'center'}}>
           <Image source={Icons.profile}
             style={styles.img} />
           <TextWrapper style={styles.shortdes}>Smith Johnson</TextWrapper>
+          <TouchableOpacity onPress={()=>props.navigation.navigate('EditProfileScreen')}>
           <TextWrapper style={styles.des}>Edit Profile</TextWrapper>
 
-          <View style={styles.fieldsView}>
-            <AuthTextInput
-              value={fName}
-              icon
-              onChangeText={text => setfName(text)}
-              placeHolder=" First Name"
-            />
-            <AuthTextInput
-              value={lName}
-              icon
-              onChangeText={text => setlName(text)}
-              placeHolder="Last Name"
+          </TouchableOpacity>
+          </View>
+        
 
-            />
-            <AuthTextInput
-              value={email}
-              icon
-              onChangeText={text => setemail(text)}
-              placeHolder="Email address"
-
-            />
-            <AuthTextInput
-              value={password}
-              icon
-              onChangeText={text => setPassword(text)}
-              placeHolder="Password"
-
-            />
-            <AuthTextInput
-              value={confirmpassword}
-              icon
-              onChangeText={text => setconfirmPassword(text)}
-              placeHolder="Confirm password"
-
-            />
+          <View >
+          <View style={{marginTop:2*vh}}>
+          <TextWrapper style={styles.title}>Fist Name</TextWrapper>
+          <TextWrapper style={styles.subtitle}>Smith</TextWrapper>
+        </View>
+        <View style={{marginTop:2*vh}}>
+          <TextWrapper style={styles.title}>Last Name</TextWrapper>
+          <TextWrapper style={styles.subtitle}>Johnson</TextWrapper>
+        </View>
+        <View style={{marginTop:2*vh}}>
+          <TextWrapper style={styles.title}>Email Address</TextWrapper>
+          <TextWrapper style={styles.subtitle}>Johnson@gmail.com</TextWrapper>
+        </View>
+            
           </View>
 
 
-          <SubmitButton
-            style={styles.submitButtonStyle}
-            title="Save"
-          />
+          
         </View>
 
       </View>

@@ -1,10 +1,10 @@
 import React from 'react';
-import {View, TouchableOpacity, Image} from 'react-native';
+import { View, TouchableOpacity, Image } from 'react-native';
 import TextWrapper from '../../../components/TextWrapper';
 import styles from './styles';
-import {generalImages, Icons} from '../../../assets/images';
+import { generalImages, Icons } from '../../../assets/images';
 import theme from '../../../utils/theme';
-import {DrawerActions, useNavigation} from '@react-navigation/native';
+import { DrawerActions, useNavigation } from '@react-navigation/native';
 
 const CommonHeader = props => {
   const navigation = useNavigation();
@@ -38,28 +38,32 @@ const CommonHeader = props => {
     }
   };
   return (
-    <View style={{alignItems:'center',}}>
-    <View style={styles.searchView}>
-      {renderHeaderButton()}
-      <TextWrapper
-        numberOfLines={2}
-        style={[styles.searchTextStyle, props.style]}>
-        {props.title}
-      </TextWrapper>
+    <View style={{ alignItems: 'center', }}>
+      <View style={styles.searchView}>
+        {renderHeaderButton()}
+        <TextWrapper
+          numberOfLines={2}
+          style={[styles.searchTextStyle, props.style]}>
+          {props.title}
+        </TextWrapper>
 
-      <View style={styles.searchIconsView}>
-        <TouchableOpacity
-          onPress={props.onPress}
-          style={styles.searchIconButtonView}>
-          {props.profile ? (
-            <Image style={styles.searchIconStyle} source={Icons.profile} />
-          ) : props.edit ? (
-            <Image style={styles.searchIconStyle} source={Icons.edit} />
-          ):null}
-          {/* <Image style={styles.searchIconStyle} source={icons.search} /> */}
-        </TouchableOpacity>
+        <View style={styles.searchIconsView}>
+          <TouchableOpacity
+            onPress={props.onPress}
+            style={styles.searchIconButtonView}>
+            {props.profile ? (
+
+              <TouchableOpacity onPress={()=>{navigation.navigate('ProfileStack')}}>
+                <Image style={styles.searchIconStyle} source={Icons.profile} />
+
+              </TouchableOpacity>
+            ) : props.edit ? (
+              <Image style={styles.searchIconStyle} source={Icons.edit} />
+            ) : null}
+            {/* <Image style={styles.searchIconStyle} source={icons.search} /> */}
+          </TouchableOpacity>
+        </View>
       </View>
-    </View>
     </View>
   );
 };
