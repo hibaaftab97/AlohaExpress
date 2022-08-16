@@ -8,6 +8,7 @@ const authReducer = {
 
 const commonReducer = {
   isLoading: false,
+  attendance:false
 };
 
 

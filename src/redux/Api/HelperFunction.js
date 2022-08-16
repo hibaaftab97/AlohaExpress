@@ -151,6 +151,20 @@ export const jsonToFormdata = data => {
 
   return form_data;
 };
+export const urlToFormdata = data => {
+  //saadia's form data func //formatData
+
+ 
+  let formBody = [];
+  for (let property in data) {
+    let encodedKey = encodeURIComponent(property);
+    let encodedValue = encodeURIComponent(data[property]);
+    formBody.push(encodedKey + '=' + encodedValue);
+  }
+
+  formBody = formBody.join('&');
+  return formBody;
+};
 
 export const getConfigs = (method, body, formData = true) => {
   var headers = {
@@ -161,7 +175,13 @@ export const getConfigs = (method, body, formData = true) => {
   const data = store.getState();
 
   if (formData == true) {
+     if( method == 'PUT'){
+     headers['Content-Type'] = 'application/x-www-form-urlencoded';
+
+    }
+    else{
     headers['Content-Type'] = 'multipart/form-data';
+     }
     if (data.authReducer.token) {
       headers['Authorization'] = 'Bearer ' + data.authReducer.token;
     }
@@ -182,7 +202,14 @@ export const getConfigs = (method, body, formData = true) => {
   if (body) {
     if (method == 'POST' || method == 'PUT') {
       if (formData == true) {
-        configs['body'] = jsonToFormdata(body);
+        if(method == 'PUT'){
+          configs['body'] = urlToFormdata(body);
+
+        }
+        else{
+          configs['body'] = jsonToFormdata(body);
+
+        }
       } else {
         configs['body'] = JSON.stringify(body);
       }

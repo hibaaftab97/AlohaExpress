@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { View, FlatList, LayoutAnimation, ImageBackground, Image, TouchableOpacity } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { View, FlatList, LayoutAnimation, ImageBackground, Image,RefreshControl, TouchableOpacity } from 'react-native';
 import styles from './styles';
 import { vh, vw } from '../../../units';
 import CommonHeader from '../../../components/Headers/CommonHeader';
@@ -9,9 +9,49 @@ import TextWrapper from '../../../components/TextWrapper';
 import { Icons } from '../../../assets/images';
 import SubmitButton from '../../../components/Buttons/SubmitButton';
 import { Fonts } from '../../../assets/fonts';
+import { showToast } from '../../../redux/Api/HelperFunction';
+import { getAllAppointments} from '../../../redux/actions/appointments';
+import { useDispatch } from 'react-redux';
+import moment from 'moment'
 
 
 const AppointmentScreen = props => {
+
+  const dispatch = useDispatch();
+  const [scheduleAppoint,setScheduleAppoint]=useState([])
+  const [HistoryAppoint,setHistoryAppoint]=useState([])
+  const [refreshing,setrefreshing]=useState(true)
+
+  console.log('propsss',props);
+
+
+  useEffect(()=>{
+    dispatch(getAllAppointments()).then(response => {
+      console.log('response?.status', response);
+      if (response?.status==true) {
+        setScheduleAppoint(response?.data?.schedule)
+        setHistoryAppoint(response?.data?.history)
+        setrefreshing(false)
+      }
+    });
+  
+
+  },[])
+
+  const getAppoint=()=>{
+    setrefreshing(true)
+
+    dispatch(getAllAppointments()).then(response => {
+      console.log('response?.status', response);
+      if (response?.status==true) {
+        setScheduleAppoint(response?.data?.schedule)
+        setHistoryAppoint(response?.data?.history)
+        setrefreshing(false)
+
+      }
+    });
+  }
+
 
   const list = [{
     date: "01 April, 2022",
@@ -47,6 +87,15 @@ const AppointmentScreen = props => {
 
   const [schedule,showSchedule]=useState(true)
 
+  const empty=()=>{
+    return(
+      <View style={{flex:1,alignItems:'center',marginTop:30*vh}}>
+            <TextWrapper style={styles.subtitle}>No Appointments</TextWrapper>
+
+      </View>
+    )
+  }
+
   const renderItem = ({ item, index }) => {
     return (
       <TouchableOpacity style={styles.box}
@@ -58,7 +107,7 @@ const AppointmentScreen = props => {
 
           <View>
             <TextWrapper style={styles.title}>Date</TextWrapper>
-            <TextWrapper style={styles.subtitle}>{item.date}</TextWrapper>
+            <TextWrapper style={styles.subtitle}>{moment(item.date).format('DD MMMM, YYYY')}</TextWrapper>
 
           </View>
           <View>
@@ -69,7 +118,7 @@ const AppointmentScreen = props => {
 
         </View>
 
-        <View style={{ flexDirection: 'row', alignItems: 'flex-end', justifyContent: 'space-between', }}>
+        <View style={{ flexDirection: 'row', alignItems: 'flex-end', justifyContent: 'space-between',marginTop:2*vh }}>
 
           <View>
             <TextWrapper style={styles.title}>Service Name</TextWrapper>
@@ -113,12 +162,22 @@ const AppointmentScreen = props => {
        
       </View>
       <FlatList
-        data={list}
+        data={schedule==true? scheduleAppoint: HistoryAppoint}
+        refreshControl={
+          <RefreshControl
+            colors={[theme.primary]}
+            tintColor={theme.defaultInactiveBorderColor}
+            refreshing={refreshing}
+            onRefresh={() => {
+              getAppoint();
+            }}
+          />
+        }
         renderItem={renderItem}
         contentContainerStyle={{ alignItems: 'center', paddingBottom: 10 * vh, }}
-
+ListEmptyComponent={empty}
         keyExtractor={item => item.id}
-        style={{ paddingBottom: 10 * vh, width: 100 * vw }}
+        style={{ paddingBottom: 10 * vh, width: 100 * vw ,}}
         showsVerticalScrollIndicator={false}
       />
 

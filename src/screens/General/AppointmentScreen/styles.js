@@ -63,6 +63,7 @@ const styles = StyleSheet.create({
   },
   subtitle:{
     color:theme.black,
+    width:40*vw,
     fontFamily:Fonts.AR_medium,
     fontSize:2*vh
   },

@@ -6,9 +6,21 @@ export const base_url = urls.v1;
 export const endpoints = {
   auth: {
     login: 'login',
-    forgotpassword:"forgot-password"
-  },
+    logout: 'logout',
 
+    forgotpassword:"forgot-password",
+    verifycode:"verify",
+    resetpassword:"reset-password"
+  },
+vendors:{
+  getallAppointments:"vendors/appointment",
+  getProfile:"vendors/profile",
+  updateProfile:"vendors/edit",
+
+  timeIn:"vendors/time-in",
+  timeOut:"vendors/time-out"
+
+}
  
 };
 

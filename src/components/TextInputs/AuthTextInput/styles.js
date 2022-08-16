@@ -48,6 +48,7 @@ export default style = StyleSheet.create({
     color: theme.black,
     fontFamily:Fonts.AR_book,
     width: 66 * vw,
+    height:20*vh
   },
 
   emailStyle: {

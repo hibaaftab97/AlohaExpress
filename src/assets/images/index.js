@@ -16,6 +16,8 @@ export const Icons = {
   profile: require('./icons/profile.png'),
   edit: require('./icons/edit.png'),
   logo: require('./icons/logo.png'),
+  close: require('./icons/close-icon.png'),
+
   drawerbg: require('./icons/drawerbg.png'),
   appoint: require('./icons/appoint.png'),
   banner: require('./icons/banner.png'),
@@ -23,6 +25,12 @@ export const Icons = {
   upload: require('./icons/upload.png'),
   attach: require('./icons/attach.png'),
   download: require('./icons/download.png'),
+  gallery: require('./icons/gallery.png'),
+  profilecamera: require('./icons/profilecamera.png'),
+  removepicture: require('./icons/removepicture.png'),
+
+
+
 
   camera: require('./icons/camera.png'),
 

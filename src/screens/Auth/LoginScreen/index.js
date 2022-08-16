@@ -38,10 +38,11 @@ const LoginScreen = props => {
     }
     else {
       dispatch(userLogin(data)).then(response => {
+        
         console.log('response?.status', response);
-        if (response) {
+        if (response?.status) {
           // setVisible(!visible);
-          props.navigation.navigate('DrawerNavigator')
+          // props.navigation.navigate('DrawerNavigator')
 
 
         }

@@ -4,16 +4,20 @@ import ScrollWrapper from '../../../components/ScrollWrapper';
 import TextWrapper from '../../../components/TextWrapper';
 import AuthTextInput from '../../../components/TextInputs/AuthTextInput';
 import CodeInput from '../../../components/TextInputs/CodeInput';
+import { forgotpassword ,verifyCode,resetpassword} from '../../../redux/actions/authActions';
+import { useDispatch } from 'react-redux';
 
 import SubmitButton from '../../../components/Buttons/SubmitButton';
 import styles from './styles';
 import { vh, vw } from '../../../units';
+import { showToast } from '../../../redux/Api/HelperFunction';
 
 const ForgotPasswordScreen = props => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [verificationCode, setVerificationCode] = useState();
+  const dispatch = useDispatch();
 
   const code1Ref = useRef();
   const code2Ref = useRef();
@@ -31,6 +35,83 @@ const ForgotPasswordScreen = props => {
     width: animation,
   };
 
+  const sendCode = () => {
+    const data = {
+      email: email,
+    };
+
+
+    if (email == '') {
+      showToast('Enter email');
+
+    }
+
+    else if (!validateEmail(email)) {
+      showToast('Please Enter a Valid Email');
+    }
+    else {
+      dispatch(forgotpassword(data)).then(response => {
+        console.log('response?.status', response);
+        if (response) {
+          // setVisible(!visible);\
+          setStep(step + 1);
+        }
+      });
+    }
+
+
+  };
+
+  const _verifyCode = () => {
+    const data = {
+      code: code1+code2+code3+code4,
+    };
+
+
+    if (code1 == ''||code2 == ''||code3 == ''||code4 == '') {
+      showToast('Enter code');
+
+    }
+
+   
+    else {
+      dispatch(verifyCode(data)).then(response => {
+        console.log('response?.status', response);
+        if (response) {
+          // setVisible(!visible);\
+          setStep(step + 1);
+        }
+      });
+    }
+
+
+  };
+
+  const _resetPassword = () => {
+    const data = {
+      password: password,
+      code:code1+code2+code3+code4,
+    };
+
+
+    if (password == '') {
+      showToast('Enter password');
+
+    }
+
+   
+    else {
+      dispatch(resetpassword(data)).then(response => {
+        console.log('response?.status', response);
+        if (response) {
+          // setVisible(!visible);\
+          props.navigation.navigate('LoginScreen')
+        }
+      });
+    }
+
+
+  };
 
   const onChange = (field_no, e) => {
     console.log("onChange==>", code2Ref)
@@ -200,7 +281,7 @@ const ForgotPasswordScreen = props => {
 
   const handleOnPress = () => {
     if (step == 1) {
-      setStep(step + 1);
+      sendCode()
       // Animated.timing(animation, {
       //   toValue: 40,
       // }).start();
@@ -209,7 +290,7 @@ const ForgotPasswordScreen = props => {
       // Animated.timing(animation, {
       //   toValue: 60,
       // }).start();
-      setStep(step + 1);
+      _verifyCode()
 
     }
   }
@@ -224,7 +305,7 @@ const ForgotPasswordScreen = props => {
 
           {step == 3 ? (
             <SubmitButton
-              onPress={() => props.navigation.navigate('LoginScreen')}
+              onPress={_resetPassword}
 
               style={styles.submitButtonStyle}
               titleTextStyle={styles.titleTextStyle}

@@ -33,7 +33,7 @@ const AuthTextInput = props => {
         value={props.value}
         maxLength={props?.maxLength}
         onChangeText={props.onChangeText}
-        style={[styles.textInputStyle,props?.secureTextEntry&& {width:60*vw}]}
+        style={[styles.textInputStyle,props?.secureTextEntry&& {width:60*vw},props?.textConStyle]}
         placeholder={props.placeHolder}
         placeholderTextColor={theme.defaultInactiveBorderColor}
         secureTextEntry={props.type ? true : false}
@@ -41,6 +41,7 @@ const AuthTextInput = props => {
         // keyboardType='email-address'
         keyboardType={props.keyboardType}
         secureTextEntry={props.secureTextEntry && !isShow}
+        // {...props}
       />
       {props?.secureTextEntry && (
           <TouchableOpacity

@@ -14,6 +14,16 @@ const commonReducer = (state = initialState, action) => {
         ...state,
         isLoading: false,
       };
+    case types.TIMEIN:
+      return {
+        ...state,
+        attendance: true,
+      };
+    case types.TIMEOUT:
+      return {
+        ...state,
+        attendance: false,
+      };
 
     default:
       return state;

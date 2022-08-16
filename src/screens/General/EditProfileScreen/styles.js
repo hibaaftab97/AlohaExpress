@@ -54,6 +54,8 @@ const styles = StyleSheet.create({
   img: {
       width:30*vw,
       height:30*vw,
+      borderRadius:15*vh,
+
       resizeMode:'contain'
   },
   imgIcon: {
